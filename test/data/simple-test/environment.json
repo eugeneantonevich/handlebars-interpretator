@@ -1,0 +1,10 @@
+{
+  "resolve_value_name": {
+    "type": "variable",
+    "name": "test_variable"
+  },
+  "resolve_block_name": {
+    "type": "block",
+    "text": "some static text"
+  }
+}

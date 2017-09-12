@@ -33,7 +33,9 @@ function resolve(environment, text, interpretator, resolver) {
   let startWordPos = 0;
   while (currentPos !== -1) {
     startWordPos = text.indexOf(resolver.openWord, currentPos);
+
     if (startWordPos === -1) {
+      currentPos = -1;
       continue;
     }
 
@@ -63,9 +65,9 @@ function resolve(environment, text, interpretator, resolver) {
       default:
 
     }
-
-    return textRef;
   }
+
+  return textRef;
 }
 
 module.exports = resolve;
