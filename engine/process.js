@@ -27,7 +27,7 @@ const error = require('../error');
   interpretator - object generate text
 */
 
-function resolve(environment, text, interpretator, resolver) {
+function process(environment, text, interpretator, resolver) {
   let textRef = text;
   let currentPos = 0;
   let startWordPos = 0;
@@ -60,7 +60,7 @@ function resolve(environment, text, interpretator, resolver) {
         textRef = resolver.resolve(text, startWordPos, interpretator.variable.do(variable));
         break;
       case 'text':
-        textRef = resolve(environment, text, interpretator, resolver);
+        textRef = process(environment, text, interpretator, resolver);
         break;
       default:
 
@@ -70,4 +70,4 @@ function resolve(environment, text, interpretator, resolver) {
   return textRef;
 }
 
-module.exports = resolve;
+module.exports = process;

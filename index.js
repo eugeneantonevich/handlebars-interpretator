@@ -1,11 +1,11 @@
 'use strict';
 
 const resolvers = require('./resolvers');
-const processing = require('./processing');
+const engine = require('./engine');
 const handlebars = require('./handlebars');
 
 function resolveHtml(text, environment) {
-  return processing.resolve(environment, text, handlebars.interpretator(), resolvers.textResolver());
+  return engine.process(environment, text, handlebars.interpretator(), resolvers.textResolver());
 }
 
 module.exports = {
