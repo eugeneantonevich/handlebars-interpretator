@@ -28,32 +28,8 @@ const error = require('../error');
 */
 
 function process(environment, text, interpretator, resolver) {
-  let textRef = text;
-  let currentPos = 0;
-  let startWordPos = 0;
-  while (currentPos !== -1) {
-    startWordPos = text.indexOf(resolver.openWord, currentPos);
-
-    if (startWordPos === -1) {
-      currentPos = -1;
-      continue;
-    }
-
-    currentPos = text.indexOf(resolver.closeWord, startWordPos);
-
-    if (currentPos === -1) {
-      error.throw.invalidFormat('close word is absent');
-    }
-
-    let name = text.substr(startWordPos, currentPos - startWordPos);
-
-    console.log('var = '.concat(name));
-
-    let variable = environment[name];
-
-    if (_.isNil(variable) || _.isNil(variable.type)) {
-      error.throw.invalidFormat('name '.concat(name).concat('is absent'));
-    }
+  let _resolver = resolver(text);
+  return _resolver.process();
 
     switch (variable.type) {
       case 'variable':
@@ -65,7 +41,6 @@ function process(environment, text, interpretator, resolver) {
       default:
 
     }
-  }
 
   return textRef;
 }

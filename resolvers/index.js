@@ -1,5 +1,5 @@
 'use strict';
 
-const TextResolver = require('./textResolver');
+const indexTextResolver = require('./textResolver');
 
-module.exports = { textResolver: () => { return new TextResolver(); } };
+module.exports = { indexTextResolver };

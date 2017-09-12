@@ -4,9 +4,8 @@
 'using strict';
 
 const block = require('./block');
-const types = require('./types');
 const variable = require('./variable');
 
 module.exports = {
-  block, types, variable
+  block, variable
 }

@@ -5,7 +5,7 @@ const engine = require('./engine');
 const handlebars = require('./handlebars');
 
 function resolveHtml(text, environment) {
-  return engine.process(environment, text, handlebars.interpretator(), resolvers.textResolver());
+  return engine.process(environment, text, handlebars.interpretator(), resolvers.indexTextResolver);
 }
 
 module.exports = {
