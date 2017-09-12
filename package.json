@@ -1,5 +1,5 @@
 {
-  "name": "handlebar-interpretator",
+  "name": "handlebars-interpretator",
   "version": "0.0.1",
   "main": "index.js",
   "engines": {
@@ -12,13 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eugeneantonevich/handlebar-interpretator.git"
+    "url": "git+https://github.com/eugeneantonevich/handlebars-interpretator.git"
   },
   "author": "IskMaster",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "https://github.com/eugeneantonevich/handlebar-interpretator#readme",
+  "homepage": "https://github.com/eugeneantonevich/handlebars-interpretator#readme",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "eslint": "^3.13.1",
@@ -31,6 +28,11 @@
     "lodash": "^4.15.0",
     "morgan": "^1.7.0",
     "readdirp": "^2.1.0",
-    "recursive-readdir":"^2.1.1"
+    "recursive-readdir": "^2.1.1"
+  },
+  "description": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eugeneantonevich/handlebars-interpretator/issues"
   }
 }
