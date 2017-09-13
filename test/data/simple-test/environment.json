@@ -1,11 +1,11 @@
 [
   {
-    "source_name": "resolve_value_name",
+    "source": "resolve_value_name",
     "type": "variable",
     "name": "test_variable"
   },
   {
-    "source_name": "resolve_block_name",
+    "source": "resolve_block_name",
     "type": "block",
     "text": "some static text"
   }

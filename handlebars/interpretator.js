@@ -7,21 +7,20 @@ class Interpretator {
 
   process(environment) {
     console.log('start !');
-    return _.transform(environment, (result, value, key) => {
+    return _.transform(environment, (result, value) => {
       if (_.isNil(value)) {
         return;
       }
 
       switch (value.type) {
         case 'variable':
-          result[key] = types.variable(value.name).format();
+          result[value.source] = types.variable(value.name).format();
           break;
-        case 'text':
-          result[key] = types.variable(value.text).format();
+        case 'block':
+          result[value.source] = types.block(value.text).format();
           break;
         default:
       }
-      console.log(result);
     }, {});
   }
 }
