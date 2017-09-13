@@ -1,7 +1,6 @@
 'use strict';
 
 const _ = require('lodash');
-const error = require('../error');
 
 /*
   environment - sink of variables
@@ -28,21 +27,7 @@ const error = require('../error');
 */
 
 function process(environment, text, interpretator, resolver) {
-  let _resolver = resolver(text);
-  return _resolver.process();
-
-    switch (variable.type) {
-      case 'variable':
-        textRef = resolver.resolve(text, startWordPos, interpretator.variable.do(variable));
-        break;
-      case 'text':
-        textRef = process(environment, text, interpretator, resolver);
-        break;
-      default:
-
-    }
-
-  return textRef;
+  return resolver(text).resolve(interpretator.process(environment));
 }
 
 module.exports = process;

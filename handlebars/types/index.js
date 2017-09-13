@@ -8,4 +8,4 @@ const variable = require('./variable');
 
 module.exports = {
   block, variable
-}
+};
