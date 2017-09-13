@@ -1,8 +1,8 @@
 'using strict';
 
 class Block {
-  constructor(text) {
-    this._text = text;
+  constructor(value) {
+    this._text = value.text;
   }
 
   get text() {

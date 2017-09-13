@@ -3,8 +3,8 @@
 const common = require('../common');
 
 class Variable {
-  constructor(name) {
-    this._name = name;
+  constructor(value) {
+    this._name = value.name;
   }
 
   get name() {
@@ -12,7 +12,7 @@ class Variable {
   }
 
   format() {
-    return common.open.concat(this._name).concat(common.close);
+    return common.open.begin.concat(this._name).concat(common.close.end);
   }
 }
 

@@ -14,10 +14,13 @@ class Interpretator {
 
       switch (value.type) {
         case 'variable':
-          result[value.source] = types.variable(value.name).format();
+          result[value.source] = types.variable(value).format();
           break;
         case 'block':
-          result[value.source] = types.block(value.text).format();
+          result[value.source] = types.block(value).format();
+          break;
+        case 'equals':
+          result[value.source] = types.equals(value).format();
           break;
         default:
       }

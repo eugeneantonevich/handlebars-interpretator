@@ -8,5 +8,12 @@
     "source": "resolve_block_name",
     "type": "block",
     "text": "some static text"
+  },
+  {
+    "source": "equals_test",
+    "type": "equals",
+    "name": "test_name",
+    "value": "compare_value",
+    "body": "body_test"
   }
 ]
