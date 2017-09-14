@@ -1,6 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
+const types = require('../types');
 
 /*
   environment - sink of variables
@@ -26,8 +27,32 @@ const _ = require('lodash');
   interpretator - object generate text
 */
 
+function makeTypes(environment) {
+  return _.transform(environment, (result, value) => {
+    let type = types[value.type];
+    if (_.isNil(type)) {
+      return;
+    }
+    result[value.source] = type(value);
+  }, {});
+}
+
+function getUniqueVariables(fields, resolver) {
+  return _.transform(fields, (result, value) => {
+    result.intersect = _.union(result.intersect, resolver(value).all);
+  }, { intersect }).intersect;
+}
+
+function typesToLayer(environment, resolver) {
+  _.transform(environment, (result, value, key) => {
+    let variables = getUniqueVariables(value.resolvedFields);
+
+  }, []);
+}
+
 function process(environment, text, interpretator, resolver) {
-  // let resolver = resolverFactory(text);
+  let tree = typesToTree(makeTypes(environment));
+
   return resolver(text).resolve(interpretator.process(environment));
 }
 

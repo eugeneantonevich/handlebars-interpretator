@@ -5,7 +5,7 @@ class InvalidFormat extends Error {
     this._error = error;
   }
 
-  get text() {
+  get message() {
     return 'Invalid format exteprion: '.concat(this._error);
   }
 }

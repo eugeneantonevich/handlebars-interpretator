@@ -1,9 +1,11 @@
 'using strict';
 
-const common = require('../common');
+const hb = require('../common').hb;
+const Base = require('./base');
 
-class Variable {
+class Variable extends Base {
   constructor(value) {
+    super(value);
     this._name = value.name;
   }
 
@@ -12,7 +14,7 @@ class Variable {
   }
 
   format() {
-    return common.open.begin.concat(this._name).concat(common.close.end);
+    return hb.open.begin.concat(this._name).concat(hb.close.end);
   }
 }
 

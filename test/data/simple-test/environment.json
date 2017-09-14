@@ -19,7 +19,7 @@
   {
     "source": "condition_test",
     "type": "condition",
-    "name": "ondition_test_name",
+    "name": "oondition_test_name",
     "body_true": "body_test_true",
     "body_false": "body_test_false"
   }
