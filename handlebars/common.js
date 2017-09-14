@@ -2,6 +2,7 @@
 
 module.exports = {
   delimiter: ' ',
+  else: 'else',
   open: {
     begin: '{{',
     eq: '#eq',

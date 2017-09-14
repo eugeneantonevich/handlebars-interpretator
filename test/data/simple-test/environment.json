@@ -15,5 +15,12 @@
     "name": "test_name",
     "value": "compare_value",
     "body": "body_test"
+  },
+  {
+    "source": "condition_test",
+    "type": "condition",
+    "name": "ondition_test_name",
+    "body_true": "body_test_true",
+    "body_false": "body_test_false"
   }
 ]

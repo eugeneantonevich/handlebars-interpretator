@@ -6,24 +6,16 @@ const types = require('./types');
 class Interpretator {
 
   process(environment) {
-    console.log('start !');
     return _.transform(environment, (result, value) => {
       if (_.isNil(value)) {
         return;
       }
 
-      switch (value.type) {
-        case 'variable':
-          result[value.source] = types.variable(value).format();
-          break;
-        case 'block':
-          result[value.source] = types.block(value).format();
-          break;
-        case 'equals':
-          result[value.source] = types.equals(value).format();
-          break;
-        default:
+      let formatter = types[value.type];
+      if (_.isNil(formatter)) {
+        return;
       }
+      result[value.source] = formatter(value).format();
     }, {});
   }
 }

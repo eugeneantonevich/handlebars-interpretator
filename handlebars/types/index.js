@@ -6,7 +6,8 @@
 const block = require('./block');
 const variable = require('./variable');
 const equals = require('./equals');
+const condition = require('./condition');
 
 module.exports = {
-  block, variable, equals
+  block, variable, equals, condition
 };

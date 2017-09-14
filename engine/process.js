@@ -27,6 +27,7 @@ const _ = require('lodash');
 */
 
 function process(environment, text, interpretator, resolver) {
+  // let resolver = resolverFactory(text);
   return resolver(text).resolve(interpretator.process(environment));
 }
 
