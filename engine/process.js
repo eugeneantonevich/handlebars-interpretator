@@ -39,19 +39,18 @@ function makeTypes(environment) {
 
 function getUniqueVariables(fields, resolver) {
   return _.transform(fields, (result, value) => {
-    result.intersect = _.union(result.intersect, resolver(value).all);
-  }, { intersect }).intersect;
+    result.intersect = _.concat(result.intersect, _.union(result.intersect, resolver(value).all));
+  }, { intersect: [] }).intersect;
 }
 
-function typesToLayer(environment, resolver) {
+function typesDependences(environment, resolver) {
   _.transform(environment, (result, value, key) => {
-    let variables = getUniqueVariables(value.resolvedFields);
-
-  }, []);
+    result[key] = getUniqueVariables(value.resolvedFields, resolver);
+  }, {});
 }
 
 function process(environment, text, interpretator, resolver) {
-  let tree = typesToTree(makeTypes(environment));
+  let deps = typesDependences(makeTypes(environment), resolver);
 
   return resolver(text).resolve(interpretator.process(environment));
 }
