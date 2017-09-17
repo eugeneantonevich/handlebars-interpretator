@@ -1,7 +1,7 @@
 'using strict';
 
 const _ = require('lodash');
-const types = require('./types');
+const types = require('../types');
 
 function one(environment, name) {
   let value = environment[name];
