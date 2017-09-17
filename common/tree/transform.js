@@ -9,7 +9,7 @@ function toArray(tree) {
   let result = [];
   it.next();
   while(!it.isEnd()) {
-    result.push(it.name);
+    result.push(it.current.source);
     it.next();
   }
   return result;

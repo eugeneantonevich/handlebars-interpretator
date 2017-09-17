@@ -10,17 +10,17 @@ function getUniqueVariables(fields, resolver) {
   }, { intersect: [] }).intersect;
 }
 
-function _constructNode(parents, name) {
+function _constructNode(parents, source) {
   return {
-    name,
+    source,
     parents,
     childs: []
   }
 }
 
 function _array(environment, resolver) {
-  return _.transform(environment, (result, value, key) => {
-    result.push(_constructNode(getUniqueVariables(value.fieldsToResolve, resolver), environment.name));
+  return _.transform(environment, (result, value) => {
+    result.push(_constructNode(getUniqueVariables(value.fieldsToResolve, resolver), value.source));
   }, []);
 }
 

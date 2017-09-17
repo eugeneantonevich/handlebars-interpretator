@@ -12,7 +12,7 @@ const _ = require('lodash');
 function _fillChilds(nodes) {
   return _.transform(nodes, (result, dep) => {
     _.forEach(dep.parents, (parent) => {
-      result[parent].push(dep.name);
+      result[parent].push(dep.source);
     });
   }, nodes);
 }
@@ -20,7 +20,7 @@ function _fillChilds(nodes) {
 function _constructTree(nodes) {
   return _fillChilds(
     _.transform(nodes, (result, node) => {
-      result[node.name] = node;
+      result[node.source] = node;
     }, {}));
 }
 

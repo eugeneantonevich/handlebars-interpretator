@@ -7,14 +7,14 @@ const common = require('../common');
 function resolveEnvironment(environment, interpretator, resolver) {
   let tree = common.tree(common.tree.node.make.array(environment, resolver));
 
-  return _.transform(common.tree.transform.toArray(tree), (resolvedEnvironment, node) => {
-    let env = types.make.one(environment[node.name]);
+  return _.transform(common.tree.transform.toArray(tree), (resolvedEnvironment, nodeName) => {
+    let env = types.make.one(environment[nodeName]);
 
     let resolvedFields = _.transform(env.fieldsToResolve, (res, value, name) => {
       res[name] = resolver(value).resolve(resolvedEnvironment);
     }, {});
 
-    result[node.name] = types.clone(env, resolvedFields);
+    result[node.source] = types.clone(env, resolvedFields);
   }, {});
 }
 

@@ -2,11 +2,7 @@
 
 class LogicError extends Error {
   constructor(error) {
-    this._error = error;
-  }
-
-  get message() {
-    return 'Logic error exteprion: '.concat(this._error);
+    super('Logic error exteption: '.concat(error));
   }
 }
 

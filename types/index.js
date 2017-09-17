@@ -8,12 +8,17 @@ const variable = require('./variable');
 const equals = require('./equals');
 const condition = require('./condition');
 const error = require('../error');
+const _ = require('lodash');
 
 const types = {
   block, variable, equals, condition
 };
 
 function make(value) {
+  if (_.isNil(value)) {
+    error.throw.logicError('make type error: input value is empty');
+  }
+
   if (_.isNil(value.source)) {
     error.throw.invalidFormat('field source is absent');
   }

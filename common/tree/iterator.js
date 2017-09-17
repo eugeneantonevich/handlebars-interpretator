@@ -25,7 +25,7 @@ class TreeIterate {
 
   _findNoChildNodes() {
     let name = _.findKey(this._unprocessed, (value) => {
-      return _.isNil(value.parents);
+      return _.isNil(value.parents) || value.parents.length === 0;
     });
 
     return this._setCurrent(name);
@@ -37,6 +37,10 @@ class TreeIterate {
 
   reset() {
     this._unprocessed = _.clone(this._tree);
+  }
+
+  get current() {
+    return this._current;
   }
 
   next() {
