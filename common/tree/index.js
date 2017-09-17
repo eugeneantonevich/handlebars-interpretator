@@ -5,9 +5,8 @@ const node = require('./node');
 const make = require('./make');
 const transform = require('./transform');
 
-module.exports = {
-  iterate,
-  node,
-  make,
-  transform
-};
+make.iterate = iterate;
+make.node = node;
+make.transform = transform;
+
+module.exports = make;

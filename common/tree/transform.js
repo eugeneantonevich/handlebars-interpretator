@@ -4,12 +4,13 @@ const _ = require('lodash');
 const iterator = require('./iterator');
 
 function toArray(tree) {
-  let iterator = common.tree.iterate(tree);
-  let end = common.tree.iterate();
+  let it = iterator(tree);
 
   let result = [];
-  while(iterator.next() !== end) {
-    result.push(iterator.name);
+  it.next();
+  while(!it.isEnd()) {
+    result.push(it.name);
+    it.next();
   }
   return result;
 }

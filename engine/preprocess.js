@@ -5,11 +5,9 @@ const types = require('../types');
 const common = require('../common');
 
 function resolveEnvironment(environment, interpretator, resolver) {
-  let tree = common.tree.make(common.tree.node.make.array(environment, resolver));
+  let tree = common.tree(common.tree.node.make.array(environment, resolver));
 
-  let sortedNodes = common.tree.transform.toArray(tree);
-
-  return _.transform(sortedNodes, (resolvedEnvironment, node) => {
+  return _.transform(common.tree.transform.toArray(tree), (resolvedEnvironment, node) => {
     let env = types.make.one(environment[node.name]);
 
     let resolvedFields = _.transform(env.fieldsToResolve, (res, value, name) => {

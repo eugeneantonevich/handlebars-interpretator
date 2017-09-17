@@ -9,6 +9,10 @@ class TreeIterate {
   }
 
   _setCurrent(name) {
+    if (_.isNil(name)) {
+      this._current = null;
+      return this._current;
+    }
     this._current = this._unprocessed[name];
     _.unset(this._unprocessed, name);
 
@@ -24,10 +28,10 @@ class TreeIterate {
       return _.isNil(value.parents);
     });
 
-    return _.isNil(name) ? null : this._setCurrent(name);
+    return this._setCurrent(name);
   }
 
-  end() {
+  isEnd() {
     return _.isNil(this._current);
   }
 

@@ -20,7 +20,6 @@ function _constructNode(parents, name) {
 
 function _array(environment, resolver) {
   return _.transform(environment, (result, value, key) => {
-    let fields = value.fieldsToResolve;
     result.push(_constructNode(getUniqueVariables(value.fieldsToResolve, resolver), environment.name));
   }, []);
 }
@@ -29,7 +28,7 @@ function _array(environment, resolver) {
 module.exports = {
   make: {
     one: _constructNode,
-    all: _array
+    array: _array
   }
 };
 
