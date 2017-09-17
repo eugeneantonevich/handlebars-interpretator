@@ -1,7 +1,7 @@
 'using string';
 
 const dictionary = require('./dictionary');
-const tree = require('./TreeResolver');
+const tree = require('./tree');
 
 module.exports = {
   hb: dictionary,

@@ -11,7 +11,7 @@ class BaseType {
     this._type = value.type;
   }
 
-  get resolvedFields() {
+  get fieldsToResolve() {
     return null;
   }
 

@@ -5,7 +5,13 @@ const engine = require('./engine');
 const handlebars = require('./handlebars');
 
 function resolveHtml(text, environment) {
-  return engine.process(environment, text, handlebars.interpretator(), resolvers.indexTextResolver);
+  let interpretator = handlebars.interpretator;
+  let textResolver = resolvers.indexTextResolver;
+
+  let resolvedEnvironment =
+    engine.preprocess.resolveEnvironment(environment, interpretator, textResolver);
+
+  return engine.process(resolvedEnvironment, text, textResolver);
 }
 
 module.exports = {

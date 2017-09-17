@@ -28,7 +28,7 @@ class Condition extends Base {
       .concat(hb.close.end);
   }
 
-  get resolvedFields() {
+  get fieldsToResolve() {
     return {
       body_true: this._bodyTrue,
       body_false: this._bodyFalse

@@ -16,7 +16,7 @@ class Block extends Base {
     return this._text;
   }
 
-  get resolvedFields() {
+  get fieldsToResolve() {
     return {
       text: this._text
     }

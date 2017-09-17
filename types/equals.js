@@ -27,7 +27,7 @@ class Equals extends Base {
       .concat(hb.close.end);
   }
 
-  get resolvedFields() {
+  get fieldsToResolve() {
     return {
       body: this._body
     }

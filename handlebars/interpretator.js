@@ -3,21 +3,31 @@
 const _ = require('lodash');
 const types = require('./types');
 
-class Interpretator {
-
-  process(environment) {
-    return _.transform(environment, (result, value) => {
-      if (_.isNil(value)) {
-        return;
-      }
-
-      let formatter = types[value.type];
-      if (_.isNil(formatter)) {
-        return;
-      }
-      result[value.source] = formatter(value).format();
-    }, {});
+function one(environment, name) {
+  let value = environment[name];
+  if (_.isNil(value)) {
+    return null;
   }
+
+  let formatter = types[value.type];
+  if (_.isNil(formatter)) {
+    return null;
+  }
+
+  return formatter(value).format();
 }
 
-module.exports = Interpretator;
+function all(environment) {
+  return _.transform(environment, (result, value) => {
+    let res = one(environment, value);
+    if (res) {
+      result[value.source] = res;
+    }
+  }, {});
+}
+
+module.exports = {
+  process: {
+    all, one
+  }
+};
