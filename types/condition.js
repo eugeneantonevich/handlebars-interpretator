@@ -32,9 +32,8 @@ class Condition extends Base {
     return {
       body_true: this._bodyTrue,
       body_false: this._bodyFalse
-    }
+    };
   }
-
 }
 
 module.exports = (value) => { return new Condition(value); };

@@ -30,9 +30,8 @@ class Equals extends Base {
   get fieldsToResolve() {
     return {
       body: this._body
-    }
+    };
   }
-
 }
 
 module.exports = (value) => { return new Equals(value); };

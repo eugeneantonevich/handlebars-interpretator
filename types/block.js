@@ -19,12 +19,8 @@ class Block extends Base {
   get fieldsToResolve() {
     return {
       text: this._text
-    }
+    };
   }
-
-//  clone (value) {
-//    return new Block(this._append(value));
-//  }
 }
 
 module.exports = (text) => { return new Block(text); };

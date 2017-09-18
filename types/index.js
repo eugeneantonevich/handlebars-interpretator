@@ -33,15 +33,20 @@ function make(value) {
 
 function makeTypes(environment) {
   return _.transform(environment, (result, value) => {
-    result[value.source] = types.make.one(value);
+    result[value.source] = make(value);
   }, {});
 }
 
-function _clone(variable, resolvedData) {
-  return _.assign(_.clone(variable), resolvedData);
+function _clone(value, resolvedData) {
+  return _.assign(_.clone(value), resolvedData);
+}
+
+function _isType(value) {
+  return value && value._variable;
 }
 
 module.exports = {
+  isType: _isType,
   clone: _clone,
   make: {
     one: make,

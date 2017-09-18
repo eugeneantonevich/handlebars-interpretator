@@ -2,16 +2,15 @@
 
 const resolvers = require('./resolvers');
 const engine = require('./engine');
-const handlebars = require('./handlebars');
+const interpretators = require('./interpretator');
 
 function resolveHtml(text, environment) {
-  let interpretator = handlebars.interpretator;
-  let textResolver = resolvers.indexTextResolver;
+  let interpretator = interpretators.handlebars;
+  let textResolver = resolvers.datasource.text;
 
   let resolvedEnvironment =
-    engine.preprocess.resolveEnvironment(environment, interpretator, textResolver);
-
-  return engine.process(resolvedEnvironment, text, textResolver);
+    engine.preprocess.resolveEnvironment(environment, textResolver);
+  return engine.process(resolvedEnvironment, text, interpretator, textResolver);
 }
 
 module.exports = {

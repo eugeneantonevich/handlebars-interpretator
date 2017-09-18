@@ -3,18 +3,19 @@
 const _ = require('lodash');
 const types = require('../types');
 const common = require('../common');
+const resolvers = require('../resolvers');
 
-function resolveEnvironment(environment, interpretator, resolver) {
-  let tree = common.tree(common.tree.node.make.array(environment, resolver));
+function resolveEnvironment(environment, resolver) {
+  let envs = types.make.array(environment);
+
+  let nodes = _.transform(envs, (result, value, name) => {
+    result.push(common.tree.node.make.one(resolvers.type(value, resolver).all, [], name));
+  }, []);
+
+  let tree = common.tree(nodes);
 
   return _.transform(common.tree.transform.toArray(tree), (resolvedEnvironment, nodeName) => {
-    let env = types.make.one(environment[nodeName]);
-
-    let resolvedFields = _.transform(env.fieldsToResolve, (res, value, name) => {
-      res[name] = resolver(value).resolve(resolvedEnvironment);
-    }, {});
-
-    result[node.source] = types.clone(env, resolvedFields);
+    resolvedEnvironment[nodeName] = resolvers.type(envs[nodeName], resolver).resolve(resolvedEnvironment);
   }, {});
 }
 

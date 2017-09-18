@@ -1,5 +1,11 @@
 'use strict';
 
-const indexTextResolver = require('./indexTextResolver');
+const indexTextResolver = require('./datasource/text');
+const type = require('./typeResolver');
 
-module.exports = { indexTextResolver };
+module.exports = {
+  datasource: {
+    text: indexTextResolver
+  },
+  type
+};

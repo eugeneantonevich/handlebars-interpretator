@@ -1,6 +1,6 @@
 'using strict';
 
-const error = require('../error');
+const error = require('../../error');
 const _ = require('lodash');
 
 const closeWord = '>>';
@@ -95,6 +95,9 @@ class IndexTextResolver {
 }
 
 function factory(text) {
+  if (!_.isString(text)) {
+    error.throw.logicError('text resolver process only string format');
+  }
   return new IndexTextResolver(text);
 }
 

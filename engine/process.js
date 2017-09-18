@@ -1,7 +1,8 @@
 'use strict';
 
-const _ = require('lodash');
-const types = require('../types');
+// const _ = require('lodash');
+// const types = require('../types');
+
 /*
   environment - sink of variables
     env_variable_name: {
@@ -26,8 +27,8 @@ const types = require('../types');
   interpretator - object generate text
 */
 
-function process(environment, text, resolver) {
-  return resolver(text).resolve(environment);
+function process(environment, text, interpretator, resolver) {
+  return resolver(text).resolve(interpretator.array(environment));
 }
 
 module.exports = process;

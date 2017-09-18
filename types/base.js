@@ -9,6 +9,8 @@ class BaseType {
       error.throw.logicError('type is absent!');
     }
     this._type = value.type;
+    this._variable = true;
+    this._source = value.source;
   }
 
   get fieldsToResolve() {
@@ -19,9 +21,9 @@ class BaseType {
     return this._type;
   }
 
-//  _append(value) {
-//   return _.assign(this, value);
-//  }
+  get source() {
+    return this._source;
+  }
 }
 
 module.exports = BaseType;

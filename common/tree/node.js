@@ -4,23 +4,17 @@ const _ = require('lodash');
 
 // resolver ?!
 
-function getUniqueVariables(fields, resolver) {
-  return _.transform(fields, (result, value) => {
-    result.intersect = _.concat(result.intersect, _.union(result.intersect, resolver(value).all));
-  }, { intersect: [] }).intersect;
-}
-
-function _constructNode(parents, source) {
+function _constructNode(parents, childs, source) {
   return {
     source,
     parents,
-    childs: []
-  }
+    childs
+  };
 }
 
-function _array(environment, resolver) {
+function _array(environment) {
   return _.transform(environment, (result, value) => {
-    result.push(_constructNode(getUniqueVariables(value.fieldsToResolve, resolver), value.source));
+    result.push(_constructNode(value, value.source));
   }, []);
 }
 
